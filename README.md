@@ -9,13 +9,13 @@ In this project, we will excercise how models are built using modern MLOPS pract
 Topics that will be covered are:
 
 - Feature Store and Feature Engineering
-- Model Monitoring
-- Model Registry
 - Experiments Management
+- Model Registry
 - ML Pipelines
-- Automl
-- AI explainability
 - Inference
+- Model Monitoring
+- Explainable AI
+- Automl
 
 ---
 
@@ -40,7 +40,7 @@ Model registry is where the models are stored. Every experiment produces a model
 ### Pipeline
 Once a model is created, there are set of things that should happen. Such as check the quality of the model. bias check, load testing, a/b testing, rollback if necessary, model approval for production deployment. We need to be able to do this in consistent and automated way. That is what pipeline does
 
-This is an example of cicd pipeline used in this project
+This is an example of cicd pipeline typically used ( version of pipeline used in this project is slightly different. It does not have the monitoring piece implemented)
 
 ![Pipeline](./modelbuild/img/pipeline.jpg)
 
@@ -50,6 +50,9 @@ In the real world, models need to wrapped around an API so that it can be easily
   
 ### Model Monitoring
 Inference need to be monitored. if there is changes in data quality, or data itself changed, we might have to retrain the model.
+
+### Explainable AI
+Explainable AI is used to describe an AI model, its expected impact and potential biases.  As AI becomes more advanced, humans are challenged to comprehend and retrace how the algorithm came to a result. Explainable AI tries to solve this issue. 
 
 ### Automl
 All the ml platform normally provide some kind of auto ml functionality which avoid a lot of work for data scientists. 
@@ -68,7 +71,7 @@ The dataset used is the [UCI Machine Learning Abalone Dataset](https://archive.i
     
 The dataset contains several features - length (longest shell measurement), diameter (diameter perpendicular to length), height (height with meat in the shell), whole_weight (weight of whole abalone), shucked_weight (weight of meat), viscera_weight (gut weight after bleeding), shell_weight (weight after being dried), sex ('M', 'F', 'I' where 'I' is Infant), as well as rings (integer).
 
-## ModelBuild Project Artifact Description
+## ModelBuild 
 
 `modelbuild` folder contains all the code to build a model. There are 2 ways we are building model. First is using xgboost via pipeline code and another is using autopilot
 
@@ -156,9 +159,9 @@ Autopilot artifacts:
 ```
 
 
-## ModelDeploy Project 
+## ModelDeploy  
 
-This folder is for deploying an realtime inference Endpoint infrastructure. 
+This folder is for deploying a realtime inference Endpoint infrastructure. 
 This code repository has the code to find the latest approved ModelPackage for the associated ModelPackageGroup and automaticaly deploy it to the Endpoint on detecting a change (`build.py`). This code repository also defines the CloudFormation template which defines the Endpoints as infrastructure. It also has configuration files associated with `staging` and `prod` stages. 
 
 Upon triggering a deployment, the CodePipeline pipeline will deploy 2 Endpoints - `staging` and `prod`. After the first deployment is completed, the CodePipeline waits for a manual approval step for promotion to the prod stage. 
