@@ -20,19 +20,22 @@ Topics that will be covered are:
 ---
 
 ### Feature store
-Features are  all the data that we use to create model. Feature engineering is the process of transforming the data from various source and making it ready build model on top. It is basically an ETL process . 
-Feature storeis is where we store the feature data. Feature store and engineering encourages reuse of code and  data.  It also helps bring in  standarization on the ETL process. Feature store usually provide search and discovery(data catalog)
+Features are  all the data that we use to create model. Feature engineering is the process of collecting the data from various sources and transforming it to make it ready to build model on top. It is basically an ETL process . 
+Feature store is where we store the feature data. Feature store and engineering encourages reuse of code and  data.  It also helps bring in  standardization on the ETL process. Feature store usually provide search and discovery(data catalog)
 
-There are 2 types of features:online feature and offline feature. Online feature support faster lookup and are used for real time inference  whereas offline feature are slow but efficient for bulk batch training and batch inference 
+There are 2 types of features:
+- Online feature 
+- Offline feature. 
+
+Online feature support faster lookup and are used for real time inference  whereas offline feature are slow but efficient for bulk batch training and batch inference 
 
 ### Experiment Management
 
-Experiment is where a datascientist tries different things eg different model, different transformation, different hyperparameters etc to come up with most effective model. Experiment management is a process of organizing and tracking experiment metadata like code version, data version, metrics, hyperparameters etc. It allows users  to compare different models via different metrics, charts/plot, logs. 
+Experiment is where a data scientist tries different things eg different model, different transformation, different hyper parameters etc to come up with most effective model. Experiment management is a process of organizing and tracking experiment metadata like code version, data version, metrics, hyperparameters etc. It allows users  to compare different models via different metrics, charts/plot, logs. 
 
   
 ### Model Registry
-Model registry is where the models are stored. Every experiment produces a model. Each model has different metrics, different bias report etc
-Models are usually versioned and only approved models are deployed . 
+Model registry is where the models are stored. Every experiment produces a model. Each model has different metrics, different bias report etc. Models are usually versioned and only approved models are deployed . 
 
 ### Pipeline
 Once a model is created, there are set of things that should happen. Such as check the quality of the model. bias check, load testing, a/b testing, rollback if necessary, model approval for production deployment. We need to be able to do this in consistent and automated way. That is what pipeline does
@@ -49,15 +52,15 @@ In the real world, models need to wrapped around an API so that it can be easily
 Inference need to be monitored. if there is changes in data quality, or data itself changed, we might have to retrain the model.
 
 ### Automl
-All the ml platform normally provide some kind of auto ml functionality which avoid a lot of effort for data scientists. 
+All the ml platform normally provide some kind of auto ml functionality which avoid a lot of work for data scientists. 
 
 ---
 
-## End to End model pipeline
+## Implementation
 
-To test these all these feature and capabilities, we are using abalone project. Abalone is a kind of shell fish . It has list of attributes like length, width, different kind of weight(like weight of meat, guts, weigth after they dry etc).  The goal here is to figure out the the age of the abalone. Age is reflected by the rings on their shell. But counting the ring is hard, it require cutting of shell in certain way, staining the shell for better visibility and then counting the ring.This whole process is time consuming whereas gathering all those dimension mention earlier is easier.
+To test these all these capabilities, we are using abalone project. Abalone is a kind of shell fish. It has list of attributes like length, width, different kind of weight(like weight of meat, guts, weigth after they dry etc).  The goal here is to figure out the age of the abalone. Age is reflected by the rings on their shell. But counting the ring is hard, it requires cutting of shell in certain way, staining it for better visibility and then counting the rings. This whole process is very time-consuming whereas gathering all those dimensions mention earlier is much easier.
 
-Approach we have here is to use other dimensions to predict the age of the shellfish
+Idea here is to use other dimensions to predict the age of the shellfish
 
 ## Dataset for the  Abalone Pipeline
 
