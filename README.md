@@ -2,9 +2,9 @@
 
 ---
 
-Scope of this project is to build on top what we have learned in the class. In the class different algorigthms, both supervised and unsupervised of type classification and regression were covered. 
+MLOps is a core function of Machine Learning engineering, focused on streamlining the process of taking machine learning models to production, and then maintaining and monitoring them. Scope of this project is to build on top what we have learned in the class. In the class different algorigthms, both supervised and unsupervised of type classification and regression were covered. As part of this project, we will excercise how models are built using modern MLOPS practices using modern cloud data platform - mainly AWS Sagemaker. 
 
-In this project, we will excercise how models are built using modern MLOPS practices using modern cloud data platform - mainly AWS Sagemaker. 
+---
 
 Topics that will be covered are:
 
@@ -23,22 +23,22 @@ Topics that will be covered are:
 Features are  all the data that we use to create model. Feature engineering is the process of collecting the data from various sources and transforming it to make it ready to build model on top. It is basically an ETL process . 
 Feature store is where we store the feature data. Feature store and engineering encourages reuse of code and  data.  It also helps bring in  standardization on the ETL process. Feature store usually provide search and discovery(data catalog)
 
-There are 2 types of features:
-- Online feature 
-- Offline feature. 
+There are 2 types of feature stores:
+- Online featurestore
+- Offline featurestore
 
-Online feature support faster lookup and are used for real time inference  whereas offline feature are slow but efficient for bulk batch training and batch inference 
+Online feature support faster lookup and are used for real time inference  whereas offline feature have slower lookup but are efficient for batch training and batch inference.
 
 ### Experiment Management
 
-Experiment is where a data scientist tries different things eg different model, different transformation, different hyper parameters etc to come up with most effective model. Experiment management is a process of organizing and tracking experiment metadata like code version, data version, metrics, hyperparameters etc. It allows users  to compare different models via different metrics, charts/plot, logs. 
+Experiment is where a data scientist tries different things eg different model,  transformation,  hyper parameters etc to come up with most effective model. Experiment management is a process of organizing and tracking experiment metadata like code version, data version, metrics, hyperparameters etc. It allows users  to compare different models via different metrics, charts/plot, logs. 
 
   
 ### Model Registry
 Model registry is where the models are stored. Every experiment produces a model. Each model has different metrics, different bias report etc. Models are usually versioned and only approved models are deployed . 
 
 ### Pipeline
-Once a model is created, there are set of things that should happen. Such as check the quality of the model. bias check, load testing, a/b testing, rollback if necessary, model approval for production deployment. We need to be able to do this in consistent and automated way. That is what pipeline does
+Once a model is created, there are set of things that should happen. Such as check the quality of the model. bias check, load testing, a/b testing, rollback if necessary, model approval for production deployment. We need to be able to do this in a consistent and an automated way. That is what pipeline does
 
 This is an example of cicd pipeline typically used ( version of pipeline used in this project is slightly different. It does not have the monitoring piece implemented)
 
@@ -46,13 +46,13 @@ This is an example of cicd pipeline typically used ( version of pipeline used in
 
 
 ### Inference
-In the real world, models need to wrapped around an API so that it can be easily invoked. There is a lot that goes into building production quality apis. Data scientist should not have to worry about any of that and  creating an api should be super simple: one click deployment. All ml cloud platform provide that. They also provide logging/metrics/monitoring/infrastucture/autoscaling/serverless deployment
+In the real world, models need to wrapped around an API so that it can be easily invoked. There is a lot that goes into building production quality APIs. Data scientist should not have to worry about any of that and  creating an API should be simple: one click deployment. All ML cloud platform provide that. They also provide logging, metrics, monitoring, infrastucture, autoscaling, serverless deployment etc
   
 ### Model Monitoring
-Inference need to be monitored. if there is changes in data quality, or data itself changed, we might have to retrain the model.
+Inference need to be monitored. If there are changes in the data quality, or data itself changes, we might have to retrain the model. 
 
 ### Explainable AI
-Explainable AI is used to describe an AI model, its expected impact and potential biases.  As AI becomes more advanced, humans are challenged to comprehend and retrace how the algorithm came to a result. Explainable AI tries to solve this issue. 
+Explainable AI is used to describe an AI model, its expected impact and potential biases.  As AI becomes more advanced, it is challenging to comprehend and retrace how the algorithm came to a result. Explainable AI tries to solve this issue. 
 
 ### Automl
 All the ml platform normally provide some kind of auto ml functionality which avoid a lot of work for data scientists. 
@@ -202,3 +202,6 @@ Upon triggering a deployment, the CodePipeline pipeline will deploy 2 Endpoints 
 
 `test\test.py`
   - this python file contains code to describe and invoke the staging endpoint. You can customize to add more tests here.
+
+## Summary
+MLOps is a useful approach for the creation and quality of machine learning and AI solutions. By adopting an MLOps approach, data scientists and machine learning engineers can collaborate and increase the pace of model development and production, by implementing continuous integration and deployment (CI/CD) practices with proper monitoring, validation, and governance of ML models. As part of this project, some of those core features and capabilities of MLOPS practices were explored. 
